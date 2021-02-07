@@ -5,6 +5,7 @@
   import dotenv from 'dotenv';
 
   import postRoutes from './routes/posts.js';
+  import userRoutes from './routes/users.js';
   // no need for const 
 
   const app = express(); //initialize app
@@ -13,7 +14,10 @@
   app.use(bodyParser.json({ limit: "30mb", extended: true}));
   app.use(bodyParser.urlencoded({ limit: "30mb", extended: true}));
   app.use(cors());
+
+
   app.use('/posts', postRoutes); // starting path for all starting routes every route ins postRoutes starts in /posts
+  app.use('/user', userRoutes);
 
   app.get('/', (req, res) => {
     res.send('Hello to Memories API');
